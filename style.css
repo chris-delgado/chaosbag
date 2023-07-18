@@ -1,0 +1,400 @@
+@import url('https://fonts.cdnfonts.com/css/birmingham');
+
+:root {
+  --primary-color: #ff4136;
+  --text-color: #fff;
+  --secondary-color: #85144b;
+  --disabled-color: #999;
+}
+
+body {
+  font-family: 'Birmingham', sans-serif;
+  background-color: #1a1a1a;
+  color: var(--text-color);
+  margin: 0;
+  padding: 20px;
+}
+
+#app {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+h1, h4 {
+  text-align: center;
+  color: var(--text-color);
+}
+
+h2 {
+  color: grey;
+}
+
+h3 {
+  color: var(--primary-color);
+}
+
+#chaos-bag {
+  background-color: #333;
+  padding: 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+#chaos-bag button {
+  margin: 10px;
+}
+
+#drawn-token-value {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  font-size: 24px; /* font size for odds*/
+  font-weight: bold;
+  margin-top: 0; /* margin between token and odds*/
+}
+
+.button-style,
+.button-style-2 {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  font-family: 'Birmingham', sans-serif;
+}
+
+.button-style {
+  width: 200px;  /* Set the width */
+}
+
+#draw-token-button:hover,
+#reveal-another-button:hover,
+#modify-bag-button:hover,
+#add-token-button:hover,
+#remove-token-button:hover,
+#history-button:hover,
+#save-button:hover,
+#load-button:hover,
+#clear-button:hover,
+#rename-button:hover,
+#clear-history-button:hover {
+  background-color: var(--secondary-color);
+}
+
+#overlay, #history-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: none;
+  z-index: 9999;
+  overflow: auto; /* Enable scrolling */
+}
+
+.overlay-visible {
+  display: block !important;
+}
+
+#close-overlay, #close-history-overlay {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+#bag-contents {
+  margin-top: 20px;
+}
+
+#instructions ul {
+  list-style-type: none; /* Remove the bullet points */
+  padding-left: 0; /* Remove the default left padding */
+}
+
+/* This is the styling for the bag contents */
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.row span {
+  margin: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#draw-token-button:disabled,
+#reveal-another-button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+  position: relative;
+}
+
+#reveal-another-button:disabled:hover {
+  background-color: #999;
+}
+
+#reveal-another-button:disabled::before {
+  /*content: 'No tokens have been drawn';*/
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 12px;
+  white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s;
+}
+
+#reveal-another-button:disabled:hover::before {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* icomoon images below*/
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?6emcqo');
+  src:  url('fonts/icomoon.eot?6emcqo#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?6emcqo') format('truetype'),
+        url('fonts/icomoon.woff?6emcqo') format('woff'),
+        url('fonts/icomoon.svg?6emcqo#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size: 96px;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-token_frost_sealed:before {
+  content: "\e939";
+}
+.icon-token_frost_highlight:before {
+  content: "\e937";
+}
+.icon-token_frost_overlay:before {
+  content: "\e938";
+}
+.icon-token_cultist_sealed:before {
+  content: "\e900";
+  color: rgb(124, 195, 124);
+}
+.icon-token_-2_sealed:before {
+  content: "\e901";
+}
+.icon-token_-3_sealed:before {
+  content: "\e902";
+}
+.icon-token_-4_sealed:before {
+  content: "\e903";
+}
+.icon-token_-5_sealed:before {
+  content: "\e904";
+}
+.icon-token_-6_sealed:before {
+  content: "\e905";
+}
+.icon-token_-7_sealed:before {
+  content: "\e906";
+}
+.icon-token_-8_sealed:before {
+  content: "\e907";
+}
+.icon-token_tablet_sealed:before {
+  content: "\e908";
+}
+.icon-token_1_sealed:before {
+  content: "\e909";
+}
+.icon-token_0_sealed:before {
+  content: "\e90a";
+}
+.icon-token_curse_sealed:before {
+  content: "\e90b";
+  color: rgb(106, 9, 106);
+}
+.icon-token_bless_sealed:before {
+  content: "\e90c";
+  color: rgb(255, 255, 104);
+}
+.icon-token_skull_sealed:before {
+  content: "\e90d";
+  color: rgb(222, 171, 171);
+}
+.icon-token_elder_thing_sealed:before {
+  content: "\e90e";
+}
+.icon-token_elder_sign_sealed:before {
+  content: "\e90f";
+}
+.icon-token_auto_fail_sealed:before {
+  content: "\e910";
+  color: red;
+}
+.icon-token_-1_sealed:before {
+  content: "\e911";
+}
+.icon-token_sealed_outline:before {
+  content: "\e912";
+}
+.icon-tap_circle:before {
+  content: "\e913";
+}
+.icon-token_auto_fail_overlay:before {
+  content: "\e914";
+}
+.icon-token_bless_fill:before {
+  content: "\e915";
+}
+.icon-token_elder_thing_overlay:before {
+  content: "\e916";
+}
+.icon-token_elder_thing_fill:before {
+  content: "\e917";
+}
+.icon-token_tablet_fill:before {
+  content: "\e918";
+}
+.icon-token_tablet_overlay:before {
+  content: "\e919";
+}
+.icon-token_cultist_fill:before {
+  content: "\e91a";
+}
+.icon-token_auto_fail_highlight:before {
+  content: "\e91b";
+  color: red;
+}
+.icon-token_elder_sign_fill:before {
+  content: "\e91c";
+}
+.icon-token_elder_sign_overlay:before {
+  content: "\e91d";
+}
+.icon-token_elder_sign_highlight:before {
+  content: "\e91e";
+  color: skyblue;
+}
+.icon-token_curse_fill:before {
+  content: "\e91f";
+}
+.icon-token_curse_overlay:before {
+  content: "\e920";
+}
+.icon-token_-2_highlight:before {
+  content: "\e921";
+}
+.icon-token_-3_highlight:before {
+  content: "\e922";
+}
+.icon-token_-4_highlight:before {
+  content: "\e923";
+}
+.icon-token_-5_highlight:before {
+  content: "\e924";
+}
+.icon-token_-6_highlight:before {
+  content: "\e925";
+}
+.icon-token_-7_highlight:before {
+  content: "\e926";
+}
+.icon-token_-8_highlight:before {
+  content: "\e927";
+}
+.icon-token_0_highlight:before {
+  content: "\e928";
+}
+.icon-token_1_highlight:before {
+  content: "\e929";
+}
+.icon-token_-1_highlight:before {
+  content: "\e92a";
+}
+.icon-token_number_fill:before {
+  content: "\e92b";
+}
+.icon-token_cultist_overlay:before {
+  content: "\e92c";
+}
+.icon-token_cultist_highlight:before {
+  content: "\e92d";
+  color: rgb(177, 228, 177);
+}
+.icon-token_elder_thing_highlight:before {
+  content: "\e92e";
+  color: white;
+}
+.icon-token_tablet_highlight:before {
+  content: "\e92f";
+  color: rgb(210, 230, 233);
+}
+.icon-token_skull_overlay:before {
+  content: "\e930";
+}
+.icon-token_symbol_fill:before {
+  content: "\e931";
+}
+.icon-token_skull_highlight:before {
+  content: "\e932";
+  color: rgb(222, 171, 171);
+}
+.icon-token_bless_overlay:before {
+  content: "\e933";
+}
+.icon-token_number_overlay:before {
+  content: "\e934";
+}
+.icon-token_plus_highlight:before {
+  content: "\e935";
+  color: #4f5a60;
+}
+.icon-token_dismiss_highlight:before {
+  content: "\e936";
+  color: #800000;
+}
+.icon-token_sealed_outline_no_border:before {
+  content: "\e93a";
+}
+
+.icon-token_elder_sign_sealed:before {
+  color: skyblue;
+}
+
+[class^="icon-token_"]:not(.icon-token_elder_sign_highlight):not(.icon-token_auto_fail_highlight):not(.icon-token_skull_highlight):not(.icon-token_cultist_highlight):not(.icon-token_tablet_highlight):not(.icon-token_bless_sealed):not(.icon-token_curse_sealed):not(.icon-token_elder_thing_highlight):before {
+  color: white;
+}

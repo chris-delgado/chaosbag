@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arkham Horror Chaos Bag</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <h1>Arkham Horror Chaos Bag</h1>
+    <h4 id="subtitle"></h4>
+
+  <div id="chaos-bag">
+    <div id="instructions">
+        <ul>
+            <li>
+              <h3>Draw Token</h3>
+              <span>Randomly select a token from the chaos bag</span>
+            </li>
+            <li>
+              <h3>Reveal Another</h3>
+              <span>Select another token from the chaos bag excluding those already drawn</span>
+            </li>
+            <li>
+              <h3>Draw History</h3>
+              <span>Display history of token draws</span>
+            </li>
+            <li>
+              <h3>Modify Bag</h3>
+              <span>Add or remove tokens from the chaos bag</span>
+            </li>
+        </ul>
+    </div>
+  
+    <div id="drawn-token">
+      <span id="token-image"></span>
+      <p id="drawn-token-value"></p>
+      <p id="token-reference-text"></p>
+    </div>
+    <div>
+      <button  class="button-style" id="draw-token-button">Draw Token</button>
+      <button  class="button-style" id="reveal-another-button">Reveal Another</button>
+      <button  class="button-style" id="history-button">Draw History</button>
+      <button  class="button-style" id="modify-bag-button">Modify Bag</button>
+    </div>
+  </div>
+
+  <div id="overlay">
+    <h2>Presets</h2>
+
+    <div id="odds-toggle">
+        <label for="display-odds">Display Odds:</label>
+        <input type="checkbox" id="display-odds">
+    </div>
+
+    <div id="reference-toggle">
+      <label for="display-reference">Display Scenario Reference Text:</label>
+      <input type="checkbox" id="display-reference" checked>
+    </div>
+
+    <div id="campaign-selector">
+        <label for="campaign">Campaign:</label>
+        <select id="campaign">
+            <option value="The Night of the Zealot">The Night of the Zealot</option>
+            <option value="The Dunwich Legacy">The Dunwich Legacy</option>
+            <option value="The Path to Carcosa">The Path to Carcosa</option>
+            <option value="The Forgotten Age">The Forgotten Age</option>
+            <option value="The Circle Undone">The Circle Undone</option>
+            <option value="The Dream-Eaters">The Dream-Eaters</option>
+            <option value="The Innsmouth Conspiracy">The Innsmouth Conspiracy</option>
+            <option value="Edge of the Earth">Edge of the Earth</option>
+            <option value="The Scarlet Keys">The Scarlet Keys</option>
+        </select>
+    </div>
+
+    <div id="scenario-selector">
+      <label for="scenario">Scenario:</label>
+      <select id="scenario"></select>
+    </div>
+    
+    <div id="difficulty-selector">
+      <label for="difficulty">Difficulty:</label>
+      <select id="difficulty">
+          <option value="easy">Easy</option>
+          <option value="standard">Standard</option>
+          <option value="hard">Hard</option>
+          <option value="expert">Expert</option>
+      </select>
+    </div>
+
+    <h2>Profiles</h2>
+    <label for="profile"></label>
+    <select id="profile"></select><br>
+    <button class="button-style-2" id="save-button">Save</button>
+    <button class="button-style-2" id="load-button">Load</button>
+    <button class="button-style-2" id="rename-button">Rename</button>
+    <button class="button-style-2" id="delete-button">Delete</button>
+
+    <button id="close-overlay">X</button>
+    
+    <h2>Add/Remove Tokens</h2>
+    <label for="token-input"></label>
+    <select id="token-input" title="Choose an option">
+        <option value=""></option>
+        <option value="1">1</option>
+        <option value="0">0</option>
+        <option value="-1">-1</option>
+        <option value="-2">-2</option>
+        <option value="-3">-3</option>
+        <option value="-4">-4</option>
+        <option value="-5">-5</option>
+        <option value="-6">-6</option>
+        <option value="-7">-7</option>
+        <option value="-8">-8</option>
+        <option value="frost">Frost</option>
+        <option value="skull">Skull</option>
+        <option value="cultist">Cultist</option>
+        <option value="tablet">Tablet</option>
+        <option value="elder_thing">Elder Thing</option>
+        <option value="auto_fail">Autofail</option>
+        <option value="elder_sign">Elder Sign</option>
+        <option value="bless">Bless</option>
+        <option value="curse">Curse</option>
+    </select>
+    <button class="button-style-2" id="add-token-button">+</button>
+    <button class="button-style-2" id="remove-token-button">-</button>
+
+    <h2>Bag Contents (<span id="bag-total"></span>)</h2>
+    <div id="bag-contents">
+        <div class="row">
+            <img class="token-image" src="" alt="">
+        </div>
+    </div>
+  </div>
+
+  <div id="history-overlay">
+    <button id="close-history-overlay">X</button>
+    <h2>Draw History (<span id="draw-history-total"></span>)</h2>
+    <button class="button-style-2" id="clear-history-button">Clear</button>
+    <div id="draw-history" class="row"></div>
+  </div>
+  
+  <script src="main.js"></script>
+</body>
+</html>
